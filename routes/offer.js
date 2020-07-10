@@ -130,7 +130,10 @@ router.get("/offer/with-count", async (req, res) => {
       .sort(resultSort)
       .limit(resultsPerPage)
       .skip((req.query.page - 1) * resultsPerPage)
-      .populate("creator")
+      .populate({
+        path: "creator",
+        select: "account.username account.phone",
+      })
       .select("title price created creator picture description");
 
     res.status(200).json({ count: completeList.length, offers: list });
