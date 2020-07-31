@@ -62,11 +62,11 @@ router.post("/user/login", async (req, res) => {
             account: userFound.account,
           });
         } else {
-          res.status(400).json({ error: "Wrong password" });
+          res.status(401).json({ error: "Wrong password" });
         }
       } else {
         res
-          .status(400)
+          .status(404)
           .json({ error: "This user does not exist in the database" });
       }
     } else {
