@@ -12,10 +12,17 @@ const User = require("../models/User.js");
 router.post("/user/sign_up", async (req, res) => {
   try {
     if (req.fields.username && req.fields.email && req.fields.password) {
+      const usernameExists = await User.findOne({
+        username: req.fields.username,
+      });
       const emailExists = await User.findOne({ email: req.fields.email });
-      if (emailExists) {
+      if (usernameExists) {
         return res
-          .status(400)
+          .status(409)
+          .json({ error: "This username is already registered" });
+      } else if (emailExists) {
+        return res
+          .status(409)
           .json({ error: "This email is already registered" });
       } else {
         const userSalt = uid2(16);
