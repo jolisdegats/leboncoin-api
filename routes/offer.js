@@ -27,7 +27,7 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
         } else {
           //
           if (req.fields.price > 100000) {
-            res.status(400).json("Price is too high (1000 characters max)");
+            res.status(400).json("Price is too high (100000 max)");
           } else {
             //  Retrouver l'ID de l'utilisateur (récupéré avec isAthenticated)
             const userData = await User.findOne({
