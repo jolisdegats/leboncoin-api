@@ -125,6 +125,8 @@ router.get("/offer/with-count", async (req, res) => {
       resultsPerPage = 5;
     }
 
+    console.log(req.query.limit);
+
     if (!req.query.page) {
       req.query.page = 1;
     }
