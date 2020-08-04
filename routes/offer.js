@@ -51,6 +51,8 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
             });
             await offer.save();
 
+            console.log(offer);
+
             // Retour d'une partie des éléments sauvegardés
             res.status(200).json({
               _id: offer.id,
