@@ -1,5 +1,4 @@
 const express = require("express");
-const { mode } = require("crypto-js");
 const router = express.Router();
 const isAuthenticated = require("../middleware/isAuthenticated");
 const cloudinary = require("cloudinary");
@@ -9,7 +8,6 @@ const User = require("../models/User.js");
 
 router.post("/offer/publish", isAuthenticated, async (req, res) => {
   try {
-    // console.log(req.files.picture);
     //Si paramètres bien entrés
     if (
       req.fields.title &&

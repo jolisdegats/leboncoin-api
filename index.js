@@ -16,8 +16,10 @@ app.use(cors());
 
 const offer = require("./routes/offer.js");
 const user = require("./routes/user.js");
+const pay = require("./routes/pay.js");
 app.use(offer);
 app.use(user);
+app.use(pay);
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
